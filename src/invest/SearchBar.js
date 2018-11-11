@@ -222,70 +222,68 @@ class SearchBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="absolute"
           className={classNames(classes.appBar, this.props.open && classes.appBarShift)}>
-          {/* { (this.props.currentPage === 'invest' || this.props.currentPage === 'register') &&
-
-          } */}
-          { (this.state.topicSelection &&
-            <Toolbar className={classes.toolbar}>
-              { topics.map(x =>
-                <Button key={x} className={classes.topic} variant="outlined" color="inherit" onClick={() => this.handleTopicSelected(x)}>
-                  {`#${x}`}
-                </Button>)
-              }
-            </Toolbar>
-            ) ||
-            <Toolbar className={classes.toolbar}>
-              <IconButton
-                color="inherit"
-                aria-label="Open drawer"
-                onClick={this.props.onOpen}
-                className={classNames(
-                  classes.menuButton,
-                  this.props.open && classes.menuButtonHidden,
+          <Toolbar className={classes.toolbar}>
+            { (this.props.currentPage === 'invest' || this.props.currentPage === 'register') &&
+                (this.state.topicSelection &&
+                  topics.map(x =>
+                    <Button key={x} className={classes.topic} variant="outlined"
+                      color="inherit" onClick={() => this.handleTopicSelected(x)}>
+                      {`#${x}`}
+                    </Button>)
+                  ||
+                  <React.Fragment>
+                    <IconButton
+                      color="inherit"
+                      aria-label="Open drawer"
+                      onClick={this.props.onOpen}
+                      className={classNames(
+                        classes.menuButton,
+                        this.props.open && classes.menuButtonHidden,
+                      )}
+                    >
+                      <MenuIcon />
+                    </IconButton>
+                    <Button className={classes.title} variant="outlined" color="inherit" onClick={this.handleTopicSelection}>
+                      NAVEGAR TÓPICOS
+                    </Button>
+                    <div className={classes.grow} />
+                    <div className={classes.search}>
+                      <div className={classes.searchIcon}>
+                        <SearchIcon />
+                      </div>
+                      <InputBase
+                        placeholder="Busca…"
+                        value={this.state.query}
+                        classes={{
+                          root: classes.inputRoot,
+                          input: classes.inputInput,
+                        }}
+                      />
+                    </div>
+                  </React.Fragment>
                 )}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Button className={classes.title} variant="outlined" color="inherit" onClick={this.handleTopicSelection}>
-                NAVEGAR TÓPICOS
-              </Button>
-              <div className={classes.grow} />
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
+                <div className={classes.grow} />
+                <div className={classes.sectionDesktop}>
+                  <IconButton color="inherit">
+                    <Badge badgeContent={17} color="secondary">
+                      <NotificationsIcon />
+                    </Badge>
+                  </IconButton>
+                  <IconButton
+                    aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                    aria-haspopup="true"
+                    onClick={this.handleProfileMenuOpen}
+                    color="inherit"
+                  >
+                    <AccountCircle />
+                  </IconButton>
                 </div>
-                <InputBase
-                  placeholder="Busca…"
-                  value={this.state.query}
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                />
-              </div>
-              <div className={classes.grow} />
-              <div className={classes.sectionDesktop}>
-                <IconButton color="inherit">
-                  <Badge badgeContent={17} color="secondary">
-                    <NotificationsIcon />
-                  </Badge>
-                </IconButton>
-                <IconButton
-                  aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                  aria-haspopup="true"
-                  onClick={this.handleProfileMenuOpen}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-              </div>
-              <div className={classes.sectionMobile}>
-                <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                  <MoreIcon />
-                </IconButton>
-              </div>
-            </Toolbar>
-          }
+                <div className={classes.sectionMobile}>
+                  <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+                    <MoreIcon />
+                  </IconButton>
+                </div>
+          </Toolbar>
         </AppBar>
         {renderMenu}
         {renderMobileMenu}
