@@ -167,6 +167,7 @@ class SearchBar extends React.Component {
 
   handleTopicSelected = topic => {
     this.setState({ topicSelection: false, query: `#${topic}` });
+    this.props.onQueryChange(`#${topic}`);
   }
 
   handleStateChange = changes => {
@@ -269,7 +270,7 @@ class SearchBar extends React.Component {
                       <InputBase
                         placeholder="Busca…"
                         value={this.state.query}
-                        onChange={event => this.setState({query: event.value})}
+                        onChange={event => { this.setState({query: event.target.value}); this.props.onQueryChange(event.target.value); }}
                         classes={{
                           root: classes.inputRoot,
                           input: classes.inputInput,

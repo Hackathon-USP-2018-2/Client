@@ -29,12 +29,6 @@ class ComparativeTab extends React.Component {
         <Typography component="div" className={classes.chartContainer}>
           <Plotly path='universidades' />
         </Typography>
-        <Typography variant="h4" gutterBottom component="h2">
-          List
-        </Typography>
-        <div className={classes.tableContainer}>
-          <SimpleTable />
-        </div>
       </div>
     );
   }

@@ -114,6 +114,7 @@ class Dashboard extends React.Component {
   state = {
     open: true,
     currentPage: 'transparency',
+    query: '',
   };
 
   constructor(props) {
@@ -135,7 +136,8 @@ class Dashboard extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <SearchBar currentPage={this.state.currentPage} open={this.state.open} onOpen={() => this.setState({open: true})} />
+        <SearchBar currentPage={this.state.currentPage} open={this.state.open} onOpen={() => this.setState({open: true})}
+          onQueryChange={query => this.setState({query})} />
         <Drawer
           variant="permanent"
           classes={{
@@ -188,14 +190,8 @@ class Dashboard extends React.Component {
           <div className={classes.appBarSpacer} />
           { this.state.currentPage === 'transparency' && <TransparencyTab /> }
           { this.state.currentPage === 'comparative' && <ComparativeTab /> }
-          {/* <div style={{display: (this.state.currentPage === 'transparency' && 'block') || 'none' }}>
-            <TransparencyTab />
-          </div>
-          <div style={{display: (this.state.currentPage === 'comparative' && 'block') || 'none' }}>
-            <ComparativeTab />
-          </div> */}
           <div style={{display: (this.state.currentPage === 'invest' && 'block') || 'none' }}>
-            <LandingPage />
+            <LandingPage query={this.state.query} />
           </div>
           <div style={{display: (this.state.currentPage === 'register' && 'block') || 'none' }}>
             TODO

@@ -38,7 +38,7 @@ class TransparencyTab extends React.Component {
         <Typography component="div" className={classes.chartContainer}>
           <Plotly path='orcamento e liberacoes financeiras' />
         </Typography>
-        <Typography variant="h4" gutterBottom component="h2">
+        <Typography variant="h5" gutterBottom component="h2">
           Percentual do total recebido gasto com folha pagamento (ativos e inativos)
         </Typography>
         <div className={classes.tableContainer}>

@@ -57,6 +57,7 @@ const cards = [
     title: 'USP Code Lab',
     image: 'https://bcc.ime.usp.br/principal/assets/uspcodelab.png',
     description: 'Grupo de extensão universitária que tem como objetivo estimular a inovação tecnológica na USP',
+    tags: '',
     goal: 200,
     current: 28,
   },
@@ -89,6 +90,7 @@ class LandingPage extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const query = this.props.query.toLowerCase();
     return (
       <React.Fragment>
         <CssBaseline />
@@ -121,7 +123,8 @@ class LandingPage extends React.Component {
           <div className={classNames(classes.layout, classes.cardGrid)}>
             {/* End hero unit */}
             <Grid container spacing={40}>
-              {cards.map(x => (
+              {cards.filter(x => !query || x.title.toLowerCase().includes(query) || x.description.toLowerCase().includes(query)
+                   || x.tags.toLowerCase().includes(query)).map(x => (
                 <Grid item key={x.title} sm={6} md={4} lg={3}>
                   <ProjectCard title={x.title} image={x.image} description={x.description} completion={x.current * 1.0 / x.goal}
                     onClick={() => this.setState({
@@ -148,10 +151,10 @@ class LandingPage extends React.Component {
         {/* Footer */}
         <footer className={classes.footer}>
           <Typography variant="h6" align="center" gutterBottom>
-            Mais texto
+            TransparUSP
           </Typography>
           <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-            Mais coisa sobre a página aqui
+            Hackathon USP 2018.2
           </Typography>
         </footer>
         {/* End footer */}
