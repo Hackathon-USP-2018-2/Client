@@ -29,6 +29,7 @@ import { secondaryListItems } from './listItems';
 import ComparativeTab from './sections/comparative';
 import TransparencyTab from './sections/transparency';
 import SearchBar from '../invest/SearchBar';
+import LandingPage from '../invest/LandingPage';
 
 const drawerWidth = 240;
 
@@ -135,31 +136,6 @@ class Dashboard extends React.Component {
       <div className={classes.root}>
         <CssBaseline />
         <SearchBar currentPage={this.state.currentPage} open={this.state.open} onOpen={() => this.setState({open: true})} />
-        {/* <AppBar
-          position="absolute"
-          className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
-        >
-          <Toolbar disableGutters={!this.state.open} className={classes.toolbar}>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(
-                classes.menuButton,
-                this.state.open && classes.menuButtonHidden,
-              )}
-            >
-              <MenuIcon />
-            </IconButton>
-            <div style={{display: ((this.props.currentPage === 'transparency' || this.props.currentPage === 'comparative') &&
-              'block') || 'none' }}>
-            </div>
-            <div style={{display: ((this.props.currentPage === 'invest' || this.props.currentPage === 'register') &&
-              'block') || 'none' }}>
-              <SearchBar />
-            </div>
-          </Toolbar>
-        </AppBar> */}
         <Drawer
           variant="permanent"
           classes={{
@@ -215,6 +191,15 @@ class Dashboard extends React.Component {
           </div>
           <div style={{display: (this.state.currentPage === 'comparative' && 'block') || 'none' }}>
             <ComparativeTab />
+          </div>
+          <div style={{display: (this.state.currentPage === 'invest' && 'block') || 'none' }}>
+            <LandingPage />
+          </div>
+          <div style={{display: (this.state.currentPage === 'register' && 'block') || 'none' }}>
+            TODO
+          </div>
+          <div style={{display: (this.state.currentPage === 'report' && 'block') || 'none' }}>
+            TODO
           </div>
         </main>
       </div>

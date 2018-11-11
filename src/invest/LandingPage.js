@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 import ProjectCard from './ProjectCard';
-import SearchBar from './SearchBar';
 
 const styles = theme => ({
   heroUnit: {
@@ -60,7 +59,6 @@ class LandingPage extends React.Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        <SearchBar />
         <main>
           {/* Hero unit */}
           <div className={classes.heroUnit}>

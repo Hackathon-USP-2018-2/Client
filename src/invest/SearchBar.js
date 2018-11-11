@@ -261,7 +261,18 @@ class SearchBar extends React.Component {
                       />
                     </div>
                   </React.Fragment>
-                )}
+                ) ||
+                <IconButton
+                  color="inherit"
+                  aria-label="Open drawer"
+                  onClick={this.props.onOpen}
+                  className={classNames(
+                    classes.menuButton,
+                    this.props.open && classes.menuButtonHidden,
+                  )}
+                >
+                  <MenuIcon />
+                </IconButton>}
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
                   <IconButton color="inherit">
