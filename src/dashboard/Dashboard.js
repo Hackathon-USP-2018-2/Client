@@ -30,6 +30,7 @@ import ComparativeTab from './sections/comparative';
 import TransparencyTab from './sections/transparency';
 import SearchBar from '../invest/SearchBar';
 import LandingPage from '../invest/LandingPage';
+import CreateProject from '../invest/CreateProject';
 
 const drawerWidth = 240;
 
@@ -194,7 +195,7 @@ class Dashboard extends React.Component {
             <LandingPage query={this.state.query} />
           </div>
           <div style={{display: (this.state.currentPage === 'register' && 'block') || 'none' }}>
-            TODO
+            <CreateProject />
           </div>
           <div style={{display: (this.state.currentPage === 'report' && 'block') || 'none' }}>
             TODO

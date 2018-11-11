@@ -35,10 +35,10 @@ class ProjectCard extends React.Component {
             title={title}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h5" component="h2" style={{height: '55px', overflow: 'hidden'}}>
               {title}
             </Typography>
-            <Typography component="p" style={{height: '65px', overflow: 'hidden'}}>
+            <Typography component="p" style={{height: '40px', overflow: 'hidden'}}>
               {description}
             </Typography>
             <LinearProgress variant="determinate" value={100 * completion} />
