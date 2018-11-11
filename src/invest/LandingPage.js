@@ -54,6 +54,14 @@ const styles = theme => ({
 
 const cards = [
   {
+    title: 'aMuDi',
+    image: 'http://amudi.com.br/grupoamudi.github.io/public/amd_pb.png',
+    description: 'O aMuDi é um grupo nascido na Poli-USP que pesquisa a amplificação do conceito de arte através da interação com a tecnologia. Isto o torna não só um grupo artístico, mas também técnico, em que os membros permitem-se aprender sempre novas soluções e habilidades no decorrer dos projetos.',
+    tags: '#tech #art',
+    goal: 1400,
+    current: 2100,
+  },
+  {
     title: 'USP Code Lab',
     image: 'https://bcc.ime.usp.br/principal/assets/uspcodelab.png',
     description: 'Grupo de extensão universitária que tem como objetivo estimular a inovação tecnológica na USP',
@@ -78,15 +86,6 @@ const cards = [
     current: 14,
   },
   {
-    title: 'aMuDi',
-    image: 'http://amudi.com.br/grupoamudi.github.io/public/amd_pb.png',
-    description: 'O aMuDi é um grupo nascido na Poli-USP que pesquisa a amplificação do conceito de arte através da interação com a tecnologia. Isto o torna não só um grupo artístico, mas também técnico, em que os membros permitem-se aprender sempre novas soluções e habilidades no decorrer dos projetos.',
-    tags: '#tech #art',
-    goal: 1400,
-    current: 2100,
-  },
-  
-  {
     title: 'USP Game Dev',
     image: 'https://uspgamedev.org/media/logo_favicon.png',
     description: 'O USPGameDev é um grupo de extensão da USP voltado para pesquisa e desenvolvimento de jogos. ',
@@ -102,7 +101,6 @@ const cards = [
     goal: 300,
     current: 1000,
   },
- 
   {
     title: 'Grupo de Teatro da Poli',
     image: 'http://www.politecnicos.com.br/img/085.jpg',
@@ -127,6 +125,14 @@ class LandingPage extends React.Component {
   render() {
     const { classes } = this.props;
     const query = this.props.query.toLowerCase();
+
+    let sortedCards = cards;
+
+    if (this.state.liked) {
+      sortedCards = cards.filter(x => x.tags.toLowerCase().includes('#tech')).concat(cards.filter(x => !x.tags.toLowerCase().includes('#tech')));
+      console.log(sortedCards);
+    }
+
     return (
       <React.Fragment>
         <CssBaseline />
@@ -159,7 +165,7 @@ class LandingPage extends React.Component {
           <div className={classNames(classes.layout, classes.cardGrid)}>
             {/* End hero unit */}
             <Grid container spacing={40}>
-              {cards.filter(x => !query || x.title.toLowerCase().includes(query) || x.description.toLowerCase().includes(query)
+              {sortedCards.filter(x => !query || x.title.toLowerCase().includes(query) || x.description.toLowerCase().includes(query)
                    || x.tags.toLowerCase().includes(query)).map(x => (
                 <Grid item key={x.title} sm={6} md={4} lg={3}>
                   <ProjectCard title={x.title} image={x.image} description={x.description} completion={x.current * 1.0 / x.goal}
@@ -170,7 +176,9 @@ class LandingPage extends React.Component {
                       projectOpen: true,
                       projectCurrent: x.current,
                       projectGoal: x.goal,
-                    })} />
+                    })}
+                    like={() => {this.setState({liked: true})}}
+                    />
                 </Grid>
               ))}
             </Grid>

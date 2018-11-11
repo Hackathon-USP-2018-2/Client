@@ -48,7 +48,7 @@ class ProjectCard extends React.Component {
           <Button size="small" color="secondary">
             <ShareIcon />
           </Button>
-          <Button size="small" color="secondary">
+          <Button size="small" color="secondary" onClick={this.props.like}>
             <LikeIcon />
           </Button>
         </CardActions>
