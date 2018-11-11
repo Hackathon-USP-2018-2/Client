@@ -21,13 +21,28 @@ class TransparencyTab extends React.Component {
     return (
       <div>
         <Typography variant="h4" gutterBottom component="h2">
-          Gráfico Gastos
+          Seção transparência
         </Typography>
         <Typography component="div" className={classes.chartContainer}>
-          <Plotly />
+          <Plotly path='unidade' />
         </Typography>
-        <Typography variant="h4" gutterBottom component="h2">
-          List
+        <Typography component="div" className={classes.chartContainer}>
+          <Plotly path='repasse' />
+        </Typography>
+        <Typography component="div" className={classes.chartContainer}>
+          <Plotly path='universidades' />
+        </Typography>
+        <Typography component="div" className={classes.chartContainer}>
+          <Plotly path='repasse' />
+        </Typography>
+        <Typography component="div" className={classes.chartContainer}>
+          <Plotly path='orcamento e gasto' />
+        </Typography>
+        <Typography component="div" className={classes.chartContainer}>
+          <Plotly path='gasto % da unidade' />
+        </Typography>
+        <Typography component="div" className={classes.chartContainer}>
+          <Plotly path='funcionarios por unidade' />
         </Typography>
         <div className={classes.tableContainer}>
           <SimpleTable />

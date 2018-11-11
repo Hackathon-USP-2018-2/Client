@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 
 class LoginDialog extends React.Component {
   render() {
-    let { open, title, image, description } = this.props;
+    let { open, title, image, description, current, goal } = this.props;
     return (
       <Dialog open={open} maxWidth={false}>
         <Card style={{height: '80vh', width: '80vw', display: 'flex', flexDirection: 'column'}}>
@@ -30,10 +30,10 @@ class LoginDialog extends React.Component {
             </Typography>
             <br/>
             <Typography gutterBottom variant="h8" component="p">
-            Atingido: 14%
+            Atingido: {100 * current / goal}% (R${current} de R${goal})
             </Typography>
             <br/>
-            <LinearProgress variant="determinate" value={14} />
+            <LinearProgress variant="determinate" value={100 * current / goal} />
           </CardContent>
           <div style={{flex: 1}} />
           <CardActions>

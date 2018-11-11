@@ -57,6 +57,8 @@ const cards = [
     title: 'Batata',
     image: 'https://www.google.com.br/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
     description: 'Descrição longa do projeto',
+    goal: 200,
+    current: 28,
   },
 ];
 
@@ -107,12 +109,14 @@ class LandingPage extends React.Component {
             <Grid container spacing={40}>
               {cards.map(x => (
                 <Grid item key={x.title} sm={6} md={4} lg={3}>
-                  <ProjectCard title={x.title} image={x.image} description={x.description}
+                  <ProjectCard title={x.title} image={x.image} description={x.description} completion={x.current * 1.0 / x.goal}
                     onClick={() => this.setState({
                       projectTitle: x.title,
                       projectImage: x.image,
                       projectDescription: x.description,
                       projectOpen: true,
+                      projectCurrent: x.current,
+                      projectGoal: x.goal,
                     })} />
                 </Grid>
               ))}
@@ -122,6 +126,8 @@ class LandingPage extends React.Component {
               title={this.state.projectTitle}
               image={this.state.projectImage}
               description={this.state.projectDescription}
+              current={this.state.projectCurrent}
+              goal={this.state.projectGoal}
               onClose={() => this.setState({selectedProject: null, projectOpen: false})} />
           </div>
         </main>

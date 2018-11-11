@@ -7,6 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 
 const styles = {
@@ -23,7 +24,7 @@ const styles = {
 
 class ProjectCard extends React.Component {
   render() {
-    const { classes, image, title, description } = this.props;
+    const { classes, image, title, description, completion } = this.props;
     return (
       <Card className={classes.card}>
         <CardActionArea onClick={() => this.props.onClick()}>
@@ -39,6 +40,7 @@ class ProjectCard extends React.Component {
             <Typography component="p">
               {description}
             </Typography>
+            <LinearProgress variant="determinate" value={100 * completion} />
           </CardContent>
         </CardActionArea>
         <CardActions>
