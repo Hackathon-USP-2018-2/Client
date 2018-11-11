@@ -54,6 +54,22 @@ const styles = theme => ({
 
 const cards = [
   {
+    title: 'Estação Biologia',
+    image: 'http://www.ib.usp.br/estacaobiologia/wordpress/wp-content/uploads/2018/10/DSCF0729-300x180.jpg',
+    description: 'A Estação Biologia é um grupo de extensão da Biologia/USP que recebe visitas escolares em um espaço de vivências pedagógicas e, ao longo do ano, realiza diversas ações educativas dentro e fora da universidade.',
+    tags: '#education #biology #social',
+    goal: 250,
+    current: 1000,
+  },
+  {
+    title: 'Grupo de Teatro da Poli',
+    image: 'http://www.politecnicos.com.br/img/085.jpg',
+    description: 'O GTP – Grupo de Teatro da Poli é um grupo de teatro não profissional que existe desde a década de 40, na Escola Politécnica da USP e pertence ao Departamento de Cultura do Grêmio Politécnico. ',
+    tags: '#art #theatre',
+    goal: 450,
+    current: 1000,
+  },
+  {
     title: 'aMuDi',
     image: 'http://amudi.com.br/grupoamudi.github.io/public/amd_pb.png',
     description: 'O aMuDi é um grupo nascido na Poli-USP que pesquisa a amplificação do conceito de arte através da interação com a tecnologia. Isto o torna não só um grupo artístico, mas também técnico, em que os membros permitem-se aprender sempre novas soluções e habilidades no decorrer dos projetos.',
@@ -92,22 +108,6 @@ const cards = [
     tags: '#tech #art #games',
     goal: 1400,
     current: 2100,
-  },
-  {
-    title: 'Estação Biologia',
-    image: 'http://www.ib.usp.br/estacaobiologia/wordpress/wp-content/uploads/2018/10/DSCF0729-300x180.jpg',
-    description: 'A Estação Biologia é um grupo de extensão da Biologia/USP que recebe visitas escolares em um espaço de vivências pedagógicas e, ao longo do ano, realiza diversas ações educativas dentro e fora da universidade.',
-    tags: '#education #biology #social',
-    goal: 300,
-    current: 1000,
-  },
-  {
-    title: 'Grupo de Teatro da Poli',
-    image: 'http://www.politecnicos.com.br/img/085.jpg',
-    description: 'O GTP – Grupo de Teatro da Poli é um grupo de teatro não profissional que existe desde a década de 40, na Escola Politécnica da USP e pertence ao Departamento de Cultura do Grêmio Politécnico. ',
-    tags: '#art #theatre',
-    goal: 300,
-    current: 1000,
   },
 ];
 

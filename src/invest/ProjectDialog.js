@@ -39,10 +39,10 @@ class LoginDialog extends React.Component {
           </CardContent>
           <div style={{flex: 1}} />
           <CardActions>
-            <Button size="small" color="primary">
+            <Button size="small" color="primary" href='https://hackathon-usp-2018-2.github.io/Checkout/' target='_blank'>
               Doar
             </Button>
-            <Button size="small" color="primary">
+            <Button size="small" color="primary" href='https://hackathon-usp-2018-2.github.io/Checkout/' target='_blank'>
               Doação mensal
             </Button>
             <Button size="small" color="secondary">
