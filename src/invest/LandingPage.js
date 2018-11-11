@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 import ProjectCard from './ProjectCard';
+import ProjectDialog from './ProjectDialog';
 
 const styles = theme => ({
   heroUnit: {
@@ -51,9 +52,25 @@ const styles = theme => ({
   },
 });
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const cards = [
+  {
+    title: 'Batata',
+    image: 'https://www.google.com.br/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
+    description: 'Descrição longa do projeto',
+  },
+];
 
 class LandingPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      projectOpen: false,
+      projectTitle: '',
+      projectImage: '',
+      projectDescription: '',
+    };
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -88,12 +105,24 @@ class LandingPage extends React.Component {
           <div className={classNames(classes.layout, classes.cardGrid)}>
             {/* End hero unit */}
             <Grid container spacing={40}>
-              {cards.map(card => (
-                <Grid item key={card} sm={6} md={4} lg={3}>
-                  <ProjectCard title='Potato' image='http://image-net.org/index_files/logo.jpg' />
+              {cards.map(x => (
+                <Grid item key={x.title} sm={6} md={4} lg={3}>
+                  <ProjectCard title={x.title} image={x.image} description={x.description}
+                    onClick={() => this.setState({
+                      projectTitle: x.title,
+                      projectImage: x.image,
+                      projectDescription: x.description,
+                      projectOpen: true,
+                    })} />
                 </Grid>
               ))}
             </Grid>
+            <ProjectDialog
+              open={this.state.projectOpen}
+              title={this.state.projectTitle}
+              image={this.state.projectImage}
+              description={this.state.projectDescription}
+              onClose={() => this.setState({selectedProject: null, projectOpen: false})} />
           </div>
         </main>
         {/* Footer */}

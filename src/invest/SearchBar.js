@@ -16,9 +16,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-
-import LoginDialog from './LoginDialog';
+import MuiDownshift from 'mui-downshift';
 import MenuIcon from '@material-ui/icons/Menu';
+
+import { institutes } from '../data/institutes';
+import LoginDialog from './LoginDialog';
 
 const drawerWidth = 240;
 
@@ -128,6 +130,7 @@ class SearchBar extends React.Component {
     loginOpen: false,
     topicSelection: false,
     query: '',
+    filteredItems: institutes,
   };
 
   handleLogIn = () => {
@@ -165,6 +168,18 @@ class SearchBar extends React.Component {
   handleTopicSelected = topic => {
     this.setState({ topicSelection: false, query: `#${topic}` });
   }
+
+  handleStateChange = changes => {
+    if (typeof changes.inputValue === 'string') {
+      const match = institutes.find(x => x === changes.inputValue);
+      if (match) {
+        this.setState({ institute: match });
+        return;
+      }
+      const filteredItems = institutes.filter(item => item.toLowerCase().includes(changes.inputValue.toLowerCase()));
+      this.setState({ filteredItems, institute: null });
+    }
+  };
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
@@ -254,6 +269,7 @@ class SearchBar extends React.Component {
                       <InputBase
                         placeholder="Busca…"
                         value={this.state.query}
+                        onChange={event => this.setState({query: event.value})}
                         classes={{
                           root: classes.inputRoot,
                           input: classes.inputInput,
@@ -262,17 +278,31 @@ class SearchBar extends React.Component {
                     </div>
                   </React.Fragment>
                 ) ||
-                <IconButton
-                  color="inherit"
-                  aria-label="Open drawer"
-                  onClick={this.props.onOpen}
-                  className={classNames(
-                    classes.menuButton,
-                    this.props.open && classes.menuButtonHidden,
-                  )}
-                >
-                  <MenuIcon />
-                </IconButton>}
+                <React.Fragment>
+                  <IconButton
+                    color="inherit"
+                    aria-label="Open drawer"
+                    onClick={this.props.onOpen}
+                    className={classNames(
+                      classes.menuButton,
+                      this.props.open && classes.menuButtonHidden,
+                    )}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <div className={classes.grow} />
+                  <MuiDownshift
+                    className={classes.search}
+                    placeholder="Filtrar por instituto…"
+                    items={this.state.filteredItems.map(label => ({label, value: label}))}
+                    onStateChange={this.handleStateChange}
+                    inputRef={node => {
+                      this.input = node;
+                    }}
+                  />
+                  <div className={classes.grow} />
+                </React.Fragment>
+                }
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
                   <IconButton color="inherit">

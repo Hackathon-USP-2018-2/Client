@@ -26,7 +26,7 @@ class ProjectCard extends React.Component {
     const { classes, image, title, description } = this.props;
     return (
       <Card className={classes.card}>
-        <CardActionArea>
+        <CardActionArea onClick={() => this.props.onClick()}>
           <CardMedia
             className={classes.media}
             image={image}
@@ -42,7 +42,7 @@ class ProjectCard extends React.Component {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="secondary">
             Share
           </Button>
         </CardActions>
