@@ -60,6 +60,20 @@ const cards = [
     goal: 200,
     current: 28,
   },
+  {
+    title: 'Núcleo de Empreendedorismo da USP',
+    image: 'http://www.uspempreende.org/static/assets/images/logo.png',
+    description: 'O NEU (Núcleo de Empreendedorismo da USP) é uma organização formada por alunos, pesquisadores e professores movidos por uma missão: desenvolver a cultura de empreendedorismo dentro da USP. ',
+    goal: 200,
+    current: 28,
+  },
+  {
+    title: 'Tecs - Grupo de Computação Social da USP',
+    image: 'https://www.ime.usp.br/~tecs/images/logo.png?v=',
+    description: 'Encorajamos estudantes a encontrarem modos de combinar seu interesse pela ciência da computação e pelo impacto social.',
+    goal: 200,
+    current: 28,
+  },
 ];
 
 class LandingPage extends React.Component {
