@@ -24,7 +24,10 @@ class ComparativeTab extends React.Component {
           Comparativos
         </Typography>
         <Typography component="div" className={classes.chartContainer}>
-          <Plotly />
+          <Plotly path='repasse' />
+        </Typography>
+        <Typography component="div" className={classes.chartContainer}>
+          <Plotly path='universidades' />
         </Typography>
         <Typography variant="h4" gutterBottom component="h2">
           List

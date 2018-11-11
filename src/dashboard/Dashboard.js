@@ -186,12 +186,14 @@ class Dashboard extends React.Component {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          <div style={{display: (this.state.currentPage === 'transparency' && 'block') || 'none' }}>
+          { this.state.currentPage === 'transparency' && <TransparencyTab /> }
+          { this.state.currentPage === 'comparative' && <ComparativeTab /> }
+          {/* <div style={{display: (this.state.currentPage === 'transparency' && 'block') || 'none' }}>
             <TransparencyTab />
           </div>
           <div style={{display: (this.state.currentPage === 'comparative' && 'block') || 'none' }}>
             <ComparativeTab />
-          </div>
+          </div> */}
           <div style={{display: (this.state.currentPage === 'invest' && 'block') || 'none' }}>
             <LandingPage />
           </div>

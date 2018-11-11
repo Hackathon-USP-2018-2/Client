@@ -21,19 +21,10 @@ class TransparencyTab extends React.Component {
     return (
       <div>
         <Typography variant="h4" gutterBottom component="h2">
-          Seção transparência
+          Transparência
         </Typography>
         <Typography component="div" className={classes.chartContainer}>
           <Plotly path='unidade' />
-        </Typography>
-        <Typography component="div" className={classes.chartContainer}>
-          <Plotly path='repasse' />
-        </Typography>
-        <Typography component="div" className={classes.chartContainer}>
-          <Plotly path='universidades' />
-        </Typography>
-        <Typography component="div" className={classes.chartContainer}>
-          <Plotly path='repasse' />
         </Typography>
         <Typography component="div" className={classes.chartContainer}>
           <Plotly path='orcamento e gasto' />
@@ -43,6 +34,12 @@ class TransparencyTab extends React.Component {
         </Typography>
         <Typography component="div" className={classes.chartContainer}>
           <Plotly path='funcionarios por unidade' />
+        </Typography>
+        <Typography component="div" className={classes.chartContainer}>
+          <Plotly path='orcamento e liberacoes financeiras' />
+        </Typography>
+        <Typography variant="h4" gutterBottom component="h2">
+          Percentual do total recebido gasto com folha pagamento (ativos e inativos)
         </Typography>
         <div className={classes.tableContainer}>
           <SimpleTable />

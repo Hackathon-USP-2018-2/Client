@@ -83,10 +83,10 @@ class LandingPage extends React.Component {
           <div className={classes.heroUnit}>
             <div className={classes.heroContent}>
               <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                Projeto do Hackathon
+                TransparUSP
               </Typography>
               <Typography variant="h6" align="center" color="textSecondary" paragraph>
-                Descrição bonita desse site onde você coloca dinheiro para ajudar coisas na universidade
+                Portal de transparência e suporte financeiro da USP
               </Typography>
               <div className={classes.heroButtons}>
                 <Grid container spacing={16} justify="center">

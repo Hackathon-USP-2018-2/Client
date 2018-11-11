@@ -9,10 +9,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
+import ShareIcon from '@material-ui/icons/Share';
+import LikeIcon from '@material-ui/icons/ThumbUp';
 
 const styles = {
   card: {
-    // maxWidth: 345,
     height: 320,
     display: 'flex',
     flexDirection: 'column',
@@ -37,7 +38,7 @@ class ProjectCard extends React.Component {
             <Typography gutterBottom variant="h5" component="h2">
               {title}
             </Typography>
-            <Typography component="p">
+            <Typography component="p" style={{maxHeight: '65px', overflow: 'hidden'}}>
               {description}
             </Typography>
             <LinearProgress variant="determinate" value={100 * completion} />
@@ -45,7 +46,10 @@ class ProjectCard extends React.Component {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="secondary">
-            Share
+            <ShareIcon />
+          </Button>
+          <Button size="small" color="secondary">
+            <LikeIcon />
           </Button>
         </CardActions>
       </Card>

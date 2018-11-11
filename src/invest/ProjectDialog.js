@@ -9,6 +9,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
+import ShareIcon from '@material-ui/icons/Share';
+import LikeIcon from '@material-ui/icons/ThumbUp';
 
 class LoginDialog extends React.Component {
   render() {
@@ -29,7 +31,7 @@ class LoginDialog extends React.Component {
             {description}
             </Typography>
             <br/>
-            <Typography gutterBottom variant="h8" component="p">
+            <Typography gutterBottom variant="h6" component="p">
             Atingido: {100 * current / goal}% (R${current} de R${goal})
             </Typography>
             <br/>
@@ -38,10 +40,16 @@ class LoginDialog extends React.Component {
           <div style={{flex: 1}} />
           <CardActions>
             <Button size="small" color="primary">
-              Donate
+              Doar
+            </Button>
+            <Button size="small" color="primary">
+              Doação mensal
             </Button>
             <Button size="small" color="secondary">
-              Share
+              <ShareIcon />
+            </Button>
+            <Button size="small" color="secondary">
+              <LikeIcon />
             </Button>
             <Button size="small" color="secondary" onClick={() => this.props.onClose()}>
               Close
