@@ -55,7 +55,7 @@ const styles = theme => ({
 const cards = [
   {
     title: 'USP Code Lab',
-    image: 'https://ibb.co/bwoUxq',
+    image: 'https://bcc.ime.usp.br/principal/assets/uspcodelab.png',
     description: 'Grupo de extensão universitária que tem como objetivo estimular a inovação tecnológica na USP',
     goal: 200,
     current: 28,
