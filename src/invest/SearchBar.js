@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import firebase from 'firebase';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -17,11 +18,38 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
 import LoginDialog from './LoginDialog';
+import MenuIcon from '@material-ui/icons/Menu';
+
+const drawerWidth = 240;
 
 const styles = theme => ({
-  root: {
-    width: '100%',
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  toolbar: {
+    paddingRight: 24, // keep right padding when drawer closed
+  },
+  menuButton: {
+    marginLeft: 12,
+    marginRight: 36,
+  },
+  menuButtonHidden: {
+    display: 'none',
+  },
+
+  root: { },
   grow: {
     flexGrow: 1,
   },
@@ -192,9 +220,13 @@ class SearchBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="absolute"
+          className={classNames(classes.appBar, this.props.open && classes.appBarShift)}>
+          {/* { (this.props.currentPage === 'invest' || this.props.currentPage === 'register') &&
+
+          } */}
           { (this.state.topicSelection &&
-            <Toolbar>
+            <Toolbar className={classes.toolbar}>
               { topics.map(x =>
                 <Button key={x} className={classes.topic} variant="outlined" color="inherit" onClick={() => this.handleTopicSelected(x)}>
                   {`#${x}`}
@@ -202,7 +234,18 @@ class SearchBar extends React.Component {
               }
             </Toolbar>
             ) ||
-            <Toolbar>
+            <Toolbar className={classes.toolbar}>
+              <IconButton
+                color="inherit"
+                aria-label="Open drawer"
+                onClick={this.props.onOpen}
+                className={classNames(
+                  classes.menuButton,
+                  this.props.open && classes.menuButtonHidden,
+                )}
+              >
+                <MenuIcon />
+              </IconButton>
               <Button className={classes.title} variant="outlined" color="inherit" onClick={this.handleTopicSelection}>
                 NAVEGAR TÓPICOS
               </Button>

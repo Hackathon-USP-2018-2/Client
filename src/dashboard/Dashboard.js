@@ -28,6 +28,7 @@ import { initialize } from '../invest/firebase';
 import { secondaryListItems } from './listItems';
 import ComparativeTab from './sections/comparative';
 import TransparencyTab from './sections/transparency';
+import SearchBar from '../invest/SearchBar';
 
 const drawerWidth = 240;
 
@@ -133,7 +134,8 @@ class Dashboard extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar
+        <SearchBar currentPage={this.state.currentPage} open={this.state.open} onOpen={() => this.setState({open: true})} />
+        {/* <AppBar
           position="absolute"
           className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
         >
@@ -149,15 +151,15 @@ class Dashboard extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <div style={{display: ((this.state.currentPage === 'transparency' || this.state.currentPage === 'comparative') &&
+            <div style={{display: ((this.props.currentPage === 'transparency' || this.props.currentPage === 'comparative') &&
               'block') || 'none' }}>
             </div>
-            <div style={{display: ((this.state.currentPage === 'invest' || this.state.currentPage === 'register') &&
+            <div style={{display: ((this.props.currentPage === 'invest' || this.props.currentPage === 'register') &&
               'block') || 'none' }}>
-
+              <SearchBar />
             </div>
           </Toolbar>
-        </AppBar>
+        </AppBar> */}
         <Drawer
           variant="permanent"
           classes={{
