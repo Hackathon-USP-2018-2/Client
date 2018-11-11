@@ -54,9 +54,9 @@ const styles = theme => ({
 
 const cards = [
   {
-    title: 'Batata',
-    image: 'https://www.google.com.br/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png',
-    description: 'Descrição longa do projeto',
+    title: 'USP Code Lab',
+    image: 'https://goo.gl/images/fL4dp7',
+    description: 'Grupo de extensão universitária que tem como objetivo estimular a inovação tecnológica na USP',
     goal: 200,
     current: 28,
   },
