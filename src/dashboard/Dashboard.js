@@ -168,14 +168,14 @@ class Dashboard extends React.Component {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Typography variant="h4" gutterBottom component="h2">
-            Orders
+            Gráfico Gastos
           </Typography>
           <Typography component="div" className={classes.chartContainer}>
             <Plotly />
             {/* <SimpleLineChart /> */}
           </Typography>
           <Typography variant="h4" gutterBottom component="h2">
-            Products
+            List
           </Typography>
           <div className={classes.tableContainer}>
             <SimpleTable />

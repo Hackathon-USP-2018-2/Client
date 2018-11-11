@@ -23,7 +23,7 @@ const styles = {
 
 class ProjectCard extends React.Component {
   render() {
-    const { classes, image, title } = this.props;
+    const { classes, image, title, description } = this.props;
     return (
       <Card className={classes.card}>
         <CardActionArea>
@@ -37,8 +37,7 @@ class ProjectCard extends React.Component {
               {title}
             </Typography>
             <Typography component="p">
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-              across all continents except Antarctica
+              {description}
             </Typography>
           </CardContent>
         </CardActionArea>

@@ -1,5 +1,5 @@
 const CONFIG = {
-  api: 'https://todo.herokuapp.com/',
+  api: 'https://invest-usp.herokuapp.com/',
 }
 
 export default CONFIG;
