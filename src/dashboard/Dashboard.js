@@ -17,15 +17,16 @@ import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { secondaryListItems } from './listItems';
-import SimpleTable from './SimpleTable';
-import Plotly from './Plotly';
 
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import ReportIcon from '@material-ui/icons/Report';
 import MoneyIcon from '@material-ui/icons/Money';
+
+import { secondaryListItems } from './listItems';
+import ComparativeTab from './sections/comparative';
+import TransparencyTab from './sections/transparency';
 
 const drawerWidth = 240;
 
@@ -109,6 +110,7 @@ const styles = theme => ({
 class Dashboard extends React.Component {
   state = {
     open: true,
+    currentPage: 'transparency',
   };
 
   handleDrawerOpen = () => {
@@ -141,20 +143,13 @@ class Dashboard extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              className={classes.title}
-            >
-              Dashboard
-            </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            <div style={{display: ((this.state.currentPage === 'transparency' || this.state.currentPage === 'comparative') &&
+              'block') || 'none' }}>
+            </div>
+            <div style={{display: ((this.state.currentPage === 'invest' || this.state.currentPage === 'register') &&
+              'block') || 'none' }}>
+
+            </div>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -171,31 +166,31 @@ class Dashboard extends React.Component {
           </div>
           <Divider />
           <List>
-            <ListItem button>
+            <ListItem button onClick={() => this.setState({currentPage: 'transparency'})}>
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText primary='Transparência' />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={() => this.setState({currentPage: 'comparative'})}>
               <ListItemIcon>
                 <BarChartIcon />
               </ListItemIcon>
               <ListItemText primary='Comparativos' />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={() => this.setState({currentPage: 'invest'})}>
               <ListItemIcon>
                 <PeopleIcon />
               </ListItemIcon>
               <ListItemText primary='Participe!' />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={() => this.setState({currentPage: 'register'})}>
               <ListItemIcon>
                 <MoneyIcon />
               </ListItemIcon>
               <ListItemText primary='Cadastrar projeto' />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={() => this.setState({currentPage: 'report'})}>
               <ListItemIcon>
                 <ReportIcon />
               </ListItemIcon>
@@ -207,18 +202,11 @@ class Dashboard extends React.Component {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          <Typography variant="h4" gutterBottom component="h2">
-            Gráfico Gastos
-          </Typography>
-          <Typography component="div" className={classes.chartContainer}>
-            <Plotly />
-            {/* <SimpleLineChart /> */}
-          </Typography>
-          <Typography variant="h4" gutterBottom component="h2">
-            List
-          </Typography>
-          <div className={classes.tableContainer}>
-            <SimpleTable />
+          <div style={{display: (this.state.currentPage === 'transparency' && 'block') || 'none' }}>
+            <TransparencyTab />
+          </div>
+          <div style={{display: (this.state.currentPage === 'comparative' && 'block') || 'none' }}>
+            <ComparativeTab />
           </div>
         </main>
       </div>
