@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-import { initialize } from './firebase';
 import ProjectCard from './ProjectCard';
 import SearchBar from './SearchBar';
 
@@ -56,11 +55,6 @@ const styles = theme => ({
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 class LandingPage extends React.Component {
-  constructor(props) {
-    super(props);
-    initialize();
-  }
-
   render() {
     const { classes } = this.props;
     return (

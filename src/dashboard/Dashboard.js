@@ -24,6 +24,7 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import ReportIcon from '@material-ui/icons/Report';
 import MoneyIcon from '@material-ui/icons/Money';
 
+import { initialize } from '../invest/firebase';
 import { secondaryListItems } from './listItems';
 import ComparativeTab from './sections/comparative';
 import TransparencyTab from './sections/transparency';
@@ -112,6 +113,11 @@ class Dashboard extends React.Component {
     open: true,
     currentPage: 'transparency',
   };
+
+  constructor(props) {
+    super(props);
+    initialize();
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
