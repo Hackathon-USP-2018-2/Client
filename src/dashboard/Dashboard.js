@@ -16,6 +16,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import SimpleTable from './SimpleTable';
+import Plotly from './Plotly';
 
 const drawerWidth = 240;
 
@@ -170,6 +171,7 @@ class Dashboard extends React.Component {
             Orders
           </Typography>
           <Typography component="div" className={classes.chartContainer}>
+            <Plotly />
             {/* <SimpleLineChart /> */}
           </Typography>
           <Typography variant="h4" gutterBottom component="h2">
