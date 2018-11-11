@@ -8,9 +8,8 @@ import LandingPage from './invest/LandingPage';
 class App extends Component {
   render() {
     return (
-      // <Dashboard />
-      <LandingPage />
-      // <Login />
+      <Dashboard />
+      // <LandingPage />
     );
   }
 }

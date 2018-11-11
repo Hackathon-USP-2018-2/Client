@@ -31,6 +31,13 @@ const styles = theme => ({
       display: 'block',
     },
   },
+  topic: {
+    marginRight: '5px',
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
   search: {
     flexGrow: 4,
     position: 'relative',
@@ -91,6 +98,8 @@ class SearchBar extends React.Component {
     mobileMoreAnchorEl: null,
     currentUser: (firebase.auth().user || {}).displayName,
     loginOpen: false,
+    topicSelection: false,
+    query: '',
   };
 
   handleLogIn = () => {
@@ -120,6 +129,14 @@ class SearchBar extends React.Component {
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
   };
+
+  handleTopicSelection = () => {
+    this.setState({ topicSelection: true });
+  }
+
+  handleTopicSelected = topic => {
+    this.setState({ topicSelection: false, query: `#${topic}` });
+  }
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
@@ -171,48 +188,61 @@ class SearchBar extends React.Component {
       </Menu>
     );
 
+    const topics = ['tech', 'art', 'research'];
+
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Toolbar>
-            <Button className={classes.title} variant="outlined" color="inherit">
-              NAVEGAR TÓPICOS
-            </Button>
-            <div className={classes.grow} />
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
+          { (this.state.topicSelection &&
+            <Toolbar>
+              { topics.map(x =>
+                <Button key={x} className={classes.topic} variant="outlined" color="inherit" onClick={() => this.handleTopicSelected(x)}>
+                  {`#${x}`}
+                </Button>)
+              }
+            </Toolbar>
+            ) ||
+            <Toolbar>
+              <Button className={classes.title} variant="outlined" color="inherit" onClick={this.handleTopicSelection}>
+                NAVEGAR TÓPICOS
+              </Button>
+              <div className={classes.grow} />
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  placeholder="Busca…"
+                  value={this.state.query}
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                />
               </div>
-              <InputBase
-                placeholder="Busca…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
-            </div>
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-            </div>
-            <div className={classes.sectionMobile}>
-              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                <MoreIcon />
-              </IconButton>
-            </div>
-          </Toolbar>
+              <div className={classes.grow} />
+              <div className={classes.sectionDesktop}>
+                <IconButton color="inherit">
+                  <Badge badgeContent={17} color="secondary">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+                <IconButton
+                  aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                  aria-haspopup="true"
+                  onClick={this.handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+              </div>
+              <div className={classes.sectionMobile}>
+                <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+                  <MoreIcon />
+                </IconButton>
+              </div>
+            </Toolbar>
+          }
         </AppBar>
         {renderMenu}
         {renderMobileMenu}

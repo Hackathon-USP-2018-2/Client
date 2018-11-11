@@ -81,12 +81,12 @@ class LandingPage extends React.Component {
                 <Grid container spacing={16} justify="center">
                   <Grid item>
                     <Button variant="contained" color="primary">
-                      Ver por áreas
+                      Missão
                     </Button>
                   </Grid>
                   <Grid item>
                     <Button variant="outlined" color="primary">
-                      Conhecer mais
+                      Perguntas frequentes
                     </Button>
                   </Grid>
                 </Grid>
