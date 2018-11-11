@@ -93,10 +93,16 @@ class SearchBar extends React.Component {
     loginOpen: false,
   };
 
-  handleLogOut = event => {
+  handleLogIn = () => {
+    this.setState({loginOpen: true});
+    this.handleMenuClose();
+  };
+
+  handleLogOut = () => {
     firebase.auth().signOut();
     this.setState({currentUser: null});
-  }
+    this.handleMenuClose();
+  };
 
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -129,8 +135,14 @@ class SearchBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>Log Out ()</MenuItem>
+        { (this.state.currentUser &&
+            [
+              <MenuItem key='profileMenuItem' onClick={this.handleMenuClose}>Profile</MenuItem>,
+              <MenuItem key='LogOutMenuItem' onClick={this.handleLogOut}>Log Out ({this.state.currentUser})</MenuItem>
+            ]
+          ) ||
+          <MenuItem onClick={this.handleLogIn}>Log In</MenuItem>
+        }
       </Menu>
     );
 
@@ -204,7 +216,9 @@ class SearchBar extends React.Component {
         </AppBar>
         {renderMenu}
         {renderMobileMenu}
-        <LoginDialog open={this.state.loginOpen} onLogin={(result) => this.setState({currentUser: result.user.displayName})} />
+        <LoginDialog
+          open={this.state.loginOpen}
+          onLogin={(result) => this.setState({loginOpen: false, currentUser: result.user.displayName})} />
       </div>
     );
   }
